@@ -340,6 +340,7 @@ const TestScreen: React.FC<TestScreenProps> = ({ onComplete, onExit }) => {
             {restTimeRemaining}s
           </div>
           <p className="text-gray-500 text-sm md:text-base">请放松您的眼睛，暂时无需操作。</p>
+          <p className="text-gray-500 text-sm md:text-base">下一阶段为听力阶段，请提前调节好音量。</p>
         </div>
       )}
 

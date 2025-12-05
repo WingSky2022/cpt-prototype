@@ -139,6 +139,9 @@ duration: minToMs(1),
 2. 连接 Vercel 到您的 GitHub 账户
 3. 导入项目并自动部署
 4. （可选）在 Vercel 环境变量中设置 `GEMINI_API_KEY`
+5. 在 Vercel 控制台启用 Analytics 功能，即可查看「开始测评」按钮的点击统计
+
+> 💡 注意：除了「开始测评」按钮的点击统计外，其他所有测试数据都在前端本地处理，不做任何收集和上传。
 
 ### 环境变量
 ```env
@@ -287,6 +290,9 @@ duration: minToMs(1),
 2. Connect Vercel to your GitHub account
 3. Import project and deploy automatically
 4. (Optional) Set `GEMINI_API_KEY` in Vercel environment variables
+5. Enable Analytics in Vercel dashboard to view "Start Test" button click statistics
+
+> 💡 Note: Except for the "Start Test" button click statistics, all other test data is processed locally in the frontend and is not collected or uploaded.
 
 ### Environment Variables
 ```env

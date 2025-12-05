@@ -130,7 +130,7 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ data, extraClicks, user, 
       </div>
 
       <div className="text-center space-y-1 mb-8">
-        <h2 className="text-3xl font-bold text-white">V2.1 综合测评报告</h2>
+        <h2 className="text-3xl font-bold text-white">V2.2 综合测评报告</h2>
         <p className="text-gray-400 text-sm">Norm-Referenced CPT Analysis Report</p>
       </div>
 

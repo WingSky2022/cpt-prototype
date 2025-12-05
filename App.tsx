@@ -41,16 +41,16 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background text-white font-sans selection:bg-blue-500/30">
-      <main className="container mx-auto px-4 py-6 min-h-screen flex flex-col">
+      <main className={appState === 'RESULTS' ? 'container mx-auto px-4 py-6 min-h-screen flex flex-col min-h-0 overflow-y-auto' : 'container mx-auto px-4 py-6 min-h-screen flex flex-col min-h-0'}>
         {/* Header */}
         {appState !== 'TEST' && (
           <header className="flex justify-between items-center py-4 mb-8 border-b border-gray-800">
             <div className="text-xl font-bold tracking-tighter text-blue-500">NeuroScale CPT</div>
-            <div className="text-xs text-gray-500 font-mono">v2.1 Prototype (CN)</div>
+            <div className="text-xs text-gray-500 font-mono">v2.3 Prototype (CN)</div>
           </header>
         )}
 
-        <div className="flex-grow flex flex-col justify-center">
+        <div className={appState === 'RESULTS' ? 'flex-grow flex flex-col overflow-y-auto' : 'flex-grow flex flex-col justify-center'}>
           {appState === 'WELCOME' && <WelcomeScreen onStart={startTest} initialDemographics={userDemographics} />}
           {appState === 'TEST' && <TestScreen onComplete={handleTestComplete} onExit={handleExit} />}
           {appState === 'RESULTS' && userDemographics && (

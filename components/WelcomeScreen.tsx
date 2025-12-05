@@ -35,6 +35,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart, initialDemograph
 
   const handleStart = () => {
     if (isValid) {
+      try { (window as any).va?.('event', { name: 'start_test' }); } catch {}
       onStart({
         age: Number(age),
         gender: gender as 'male' | 'female'
@@ -49,7 +50,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart, initialDemograph
           CPT 注意力持续性测试
         </h1>
         <p className="text-lg md:text-xl text-gray-400">
-          视听整合持续性注意力测试 (v2.1 模拟常模版)
+          视听整合持续性注意力测试 (v2.3 模拟常模版)
         </p>
       </div>
 
@@ -75,13 +76,14 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart, initialDemograph
                <div>
                  <div className="text-green-200 font-medium">休息阶段 ({getPhaseDurationLabel(1)})</div>
                  <div className="text-sm text-gray-400">放松眼睛，无需操作。</div>
+                 <div className="text-sm text-gray-400">下一阶段为听力阶段，请提前调节好音量。</div>
                </div>
              </div>
              <div className="flex gap-3">
                <div className="w-8 h-8 rounded-full bg-purple-900/50 flex items-center justify-center text-purple-400 font-bold shrink-0">3</div>
                <div>
-                 <div className="text-purple-200 font-medium">听觉替代 ({getPhaseDurationLabel(2)})</div>
-                 <div className="text-sm text-gray-400">看到 <strong className="text-white">S (图)</strong> 按反应键，其他不按。</div>
+                 <div className="text-purple-200 font-medium">听觉测试 ({getPhaseDurationLabel(2)})</div>
+                 <div className="text-sm text-gray-400">听到声音 <strong className="text-white">X</strong> 按反应键，其他不按。</div>
                </div>
              </div>
           </div>

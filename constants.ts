@@ -19,7 +19,7 @@ export const APP_CONFIG: TestConfig = {
     {
       id: 'PHASE_1_VISUAL',
       type: 'TEST',
-      duration: minToMs(1), // 7分钟
+      duration: minToMs(0.1), // 7分钟
       hasCountdown: true,
       initialDelay: 2000, // 2秒固定启动延迟
       minISI: 2000, // 最小间隔 2000ms
@@ -40,7 +40,7 @@ export const APP_CONFIG: TestConfig = {
     {
       id: 'PHASE_3_AUDIO_PROXY',
       type: 'TEST',
-      duration: minToMs(1), // 7分钟
+      duration: minToMs(0.1), // 7分钟
       hasCountdown: true,
       initialDelay: 2000, // 2秒固定启动延迟
       minISI: 1000, // 最小间隔 1000ms
