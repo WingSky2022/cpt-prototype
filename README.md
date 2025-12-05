@@ -152,12 +152,6 @@ GEMINI_API_KEY=""
 - AI 解读功能为预留接口，尚未实现
 - 测试数据仅在当前会话有效，刷新页面后数据将丢失
 
-## 📞 支持
-
-如有问题请查看配置文档或提交 Issue。
-
-在 AI Studio 中查看您的应用：https://ai.studio/apps/drive/1-5F5yxQbvk6KAOeSP9mpEhFt5EgFU-rG
-
 ---
 
 # Readme (English)
@@ -305,15 +299,3 @@ GEMINI_API_KEY=""
 - Current version is pure frontend implementation, all data analysis is done in the browser
 - AI interpretation functionality is reserved interface, not yet implemented
 - Test data is only valid for current session, data will be lost after page refresh
-
-## 📞 Support
-
-For issues, please check the configuration guide or submit an Issue.
-
-View your app in AI Studio: https://ai.studio/apps/drive/1-5F5yxQbvk6KAOeSP9mpEhFt5EgFU-rG
-
----
-
-<div align="center">
-<sub>Built with ❤️ using React, TypeScript, and Vite</sub>
-</div>

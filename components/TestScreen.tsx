@@ -48,6 +48,7 @@ const TestScreen: React.FC<TestScreenProps> = ({ onComplete, onExit }) => {
 
   const feedbackTimeoutRef = useRef<number | null>(null);
   const rafRef = useRef<number | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // --- Helpers ---
 
@@ -58,6 +59,19 @@ const TestScreen: React.FC<TestScreenProps> = ({ onComplete, onExit }) => {
   const getNextStimulusType = (prob: number) => {
     return Math.random() < prob ? StimulusType.TARGET : StimulusType.NON_TARGET;
   };
+
+  useEffect(() => {
+    audioRef.current = new Audio();
+    audioRef.current.preload = 'auto';
+    return () => {
+      if (audioRef.current) {
+        try {
+          audioRef.current.pause();
+        } catch {}
+        audioRef.current = null;
+      }
+    };
+  }, []);
 
   const finishTest = useCallback(() => {
     gameState.current.isRunning = false;
@@ -233,6 +247,18 @@ const TestScreen: React.FC<TestScreenProps> = ({ onComplete, onExit }) => {
 
   }, [phaseState, countdownValue, restTimeRemaining, currentPhaseIndex, startPhase, isStimulusVisible]);
 
+  useEffect(() => {
+    const cfg = APP_CONFIG.phases[currentPhaseIndex];
+    if (!audioRef.current) return;
+    if (cfg.assetType === 'audio' && isStimulusVisible && displayedContent) {
+      audioRef.current.src = displayedContent;
+      audioRef.current.currentTime = 0;
+      audioRef.current.play().catch(() => {});
+    } else if (cfg.assetType === 'audio' && !isStimulusVisible) {
+      try { audioRef.current.pause(); } catch {}
+    }
+  }, [isStimulusVisible, displayedContent, currentPhaseIndex]);
+
 
   const finalizeTrial = (state: any, response: { time: number } | null, now: number) => {
     let rType: ResponseType;
@@ -351,8 +377,10 @@ const TestScreen: React.FC<TestScreenProps> = ({ onComplete, onExit }) => {
                   <span className={`text-8xl md:text-9xl font-mono font-bold ${displayedContent === 'X' ? 'text-blue-100' : 'text-white'}`}>
                     {displayedContent}
                   </span>
-                ) : (
+                ) : currentConfig.assetType === 'image' ? (
                   <img src={displayedContent} alt="stimulus" className="w-32 h-32 md:w-48 md:h-48" />
+                ) : (
+                  <span className="text-xl md:text-2xl font-mono text-gray-300">声音</span>
                 )}
               </div>
             )}

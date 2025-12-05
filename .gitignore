@@ -12,6 +12,7 @@ PRD
 dist
 dist-ssr
 *.local
+*.zip
 
 # Editor directories and files
 .vscode/*
