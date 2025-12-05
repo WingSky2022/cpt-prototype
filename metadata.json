@@ -1,0 +1,5 @@
+{
+  "name": "CPT Prototype",
+  "description": "A browser-based Continuous Performance Test (CPT) prototype for measuring sustained attention and impulsivity. Features high-precision timing, visual stimuli (X/O), and immediate CSV data export.",
+  "requestFramePermissions": []
+}
