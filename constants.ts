@@ -3,10 +3,10 @@ import { TestConfig } from './types';
 
 // 占位图片（S 和 V 图标的 Data URI，用于模拟图片）
 // S 代表信号/声音 (Signal/Sound) - 第3阶段的目标刺激
-const IMG_S = './assets/X.mp3';
+const IMG_S = '/audio/X.mp3';
 
 // V 代表视觉/空白 (Visual/Void) - 第3阶段的非目标刺激
-const IMG_V = './assets/O.mp3';
+const IMG_V = '/audio/O.mp3';
 
 export const KEY_CODE = 'Space';
 

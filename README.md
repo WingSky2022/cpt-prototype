@@ -1,12 +1,7 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# ADHD注意力持续性检测模拟器-Readme（简体中文）
 
-# CPT Continuous Performance Test Prototype
-
----
-
-# Readme（简体中文）
+本APP用于给怀疑自身是否ADHD的人群进行注意力持续性检测。
+测试结果仅供参考，如测试结果反馈为高概率，建议咨询专业医生。
 
 ## 🚀 本地运行
 
@@ -19,7 +14,7 @@
 
 2. 在 [.env.local](.env.local) 中设置您的 Gemini API 密钥（当前版本为占位符，无需真实密钥）：
    ```bash
-   # 复制 .env.example 为 .env.local
+   # 将来 .env.example 文件名改为 .env.local
    # 当前版本无需真实 API 密钥，保持 GEMINI_API_KEY="" 即可
    ```
 
@@ -63,31 +58,6 @@ export const APP_CONFIG: TestConfig = {
     // ... 阶段配置 ...
   ]
 };
-```
-
-### 图片素材说明
-
-为了方便原型部署，目前的图片素材（S图和V图）是**内置在代码中的**。
-
-*   **位置**: `constants.ts` 文件顶部
-*   **变量名**: `IMG_S` (S图标), `IMG_V` (V图标)
-
-#### 如何替换为您自己的图片？
-
-如果您希望使用本地图片（例如 `.jpg` 或 `.png`），请按以下步骤操作：
-
-1. 将图片放入项目的 `assets/` 文件夹（如需创建）。
-2. 打开 `constants.ts`。
-3. 修改变量定义，将 SVG 代码替换为文件路径。
-
-**示例：**
-
-```typescript
-// 修改前 (内置 SVG)
-const IMG_S = `data:image/svg+xml...`;
-
-// 修改后 (引用本地图片)
-const IMG_S = './assets/my-image.png';
 ```
 
 ### 详细参数说明
@@ -145,7 +115,7 @@ duration: minToMs(1),
 
 ### 环境变量
 ```env
-# 用于 Gemini AI 功能（当前版本为占位符）
+# 用于 Gemini AI 功能（当前版本为占位符，无需真实密钥）
 GEMINI_API_KEY=""
 ```
 
@@ -157,7 +127,7 @@ GEMINI_API_KEY=""
 
 ---
 
-# Readme (English)
+# ADHD Continuous Attention Test Simulator - Readme (English)
 
 ## 🚀 Run Locally
 
@@ -216,30 +186,7 @@ export const APP_CONFIG: TestConfig = {
 };
 ```
 
-### Image Assets Description
 
-For convenient prototype deployment, the current image assets (S and V icons) are **embedded directly in the code**.
-
-*   **Location**: Top of the `constants.ts` file
-*   **Variable Names**: `IMG_S` (S icon), `IMG_V` (V icon)
-
-#### How to Replace with Your Own Images?
-
-If you wish to use local image files (e.g., `.jpg` or `.png`), follow these steps:
-
-1. Place the images in the project's `assets/` folder (create if needed).
-2. Open `constants.ts`.
-3. Modify the variable definitions, replacing the SVG code with file paths.
-
-**Example:**
-
-```typescript
-// Before (embedded SVG)
-const IMG_S = `data:image/svg+xml...`;
-
-// After (reference local image)
-const IMG_S = './assets/my-image.png';
-```
 
 ### Detailed Parameter Description
 

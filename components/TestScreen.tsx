@@ -99,6 +99,26 @@ const TestScreen: React.FC<TestScreenProps> = ({ onComplete, onExit }) => {
     
     const state = gameState.current;
 
+    // 在用户手势下尝试播放当前音频（满足移动端自动播放策略）
+    if (audioRef.current && currentConfig.assetType === 'audio') {
+      try {
+        if (isStimulusVisible && displayedContent) {
+          const pickSrc = (base: string, el: HTMLAudioElement) => {
+            const isMp3 = !!el.canPlayType('audio/mpeg');
+            const isAac = !!(el.canPlayType('audio/aac') || el.canPlayType('audio/mp4'));
+            const m4a = base.replace(/\.mp3$/i, '.m4a');
+            if (isMp3) return base;
+            if (isAac) return m4a;
+            return base;
+          };
+          const src = pickSrc(displayedContent, audioRef.current);
+          audioRef.current.src = src;
+          audioRef.current.currentTime = 0;
+          audioRef.current.play().catch(() => {});
+        }
+      } catch {}
+    }
+
     if (!state.currentStimulusType) {
       state.extraClicks++;
       return;
@@ -110,7 +130,7 @@ const TestScreen: React.FC<TestScreenProps> = ({ onComplete, onExit }) => {
       state.hasResponded = true;
       pendingResponse.current = { time: performance.now() };
     }
-  }, [phaseState, currentPhaseIndex]);
+  }, [phaseState, currentPhaseIndex, isStimulusVisible, displayedContent]);
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.code !== KEY_CODE) return;
@@ -251,7 +271,16 @@ const TestScreen: React.FC<TestScreenProps> = ({ onComplete, onExit }) => {
     const cfg = APP_CONFIG.phases[currentPhaseIndex];
     if (!audioRef.current) return;
     if (cfg.assetType === 'audio' && isStimulusVisible && displayedContent) {
-      audioRef.current.src = displayedContent;
+      const pickSrc = (base: string, el: HTMLAudioElement) => {
+        const isMp3 = !!el.canPlayType('audio/mpeg');
+        const isAac = !!(el.canPlayType('audio/aac') || el.canPlayType('audio/mp4'));
+        const m4a = base.replace(/\.mp3$/i, '.m4a');
+        if (isMp3) return base;
+        if (isAac) return m4a;
+        return base;
+      };
+      const src = pickSrc(displayedContent, audioRef.current);
+      audioRef.current.src = src;
       audioRef.current.currentTime = 0;
       audioRef.current.play().catch(() => {});
     } else if (cfg.assetType === 'audio' && !isStimulusVisible) {
